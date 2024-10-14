@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class NoteIteme extends StatelessWidget {
@@ -6,28 +7,48 @@ class NoteIteme extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(top: 16, bottom: 16, left: 8),
       decoration: BoxDecoration(
-          color: Colors.yellow, borderRadius: BorderRadius.circular(16.0)),
+        color: const Color(0xffFFCC80),
+        borderRadius: BorderRadius.circular(16.0),
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           ListTile(
             title: Text(
-              'Futter Tips',
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+              'Flutter Tips',
+              style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     color: Colors.black,
+                    fontSize: 26,
                   ),
             ),
-            subtitle: Text(
-              'Build your carear with me',
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    color: Colors.black,
-                  ),
+            subtitle: Padding(
+              padding: const EdgeInsets.only(top: 16, bottom: 8),
+              child: Text(
+                'Build your carear with Abde EL Rahman',
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Colors.black.withOpacity(0.5),
+                      fontSize: 18.0,
+                    ),
+              ),
             ),
             trailing: IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.delete,
+                color: Colors.black,
+                size: 35,
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 24),
+            child: Text(
+              'oct14, 2024',
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: Colors.black.withOpacity(0.4),
+                  ),
             ),
           )
         ],
