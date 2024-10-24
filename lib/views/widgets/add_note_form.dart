@@ -3,11 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notsapp/cubits/add_note_cubit/add_note_state.dart';
 import 'package:notsapp/cubits/add_note_cubit/add_notes_cubit.dart';
 import 'package:notsapp/models/note_model.dart';
+import 'package:notsapp/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notsapp/views/widgets/custom_bottom.dart';
 import 'package:notsapp/views/widgets/custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({super.key});
+  final NotesCubit notesCubit;
+  const AddNoteForm({super.key, required this.notesCubit});
 
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
@@ -16,7 +18,6 @@ class AddNoteForm extends StatefulWidget {
 class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
-  // this line is show error in validation
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
   String? title, subTitle;
@@ -59,7 +60,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       date: DateTime.now().toString(),
                       color: Colors.blue.value,
                     );
-                    BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
+                    BlocProvider.of<AddNotesCubit>(context)
+                        .addNote(noteModel, widget.notesCubit);
                   } else {
                     autoValidateMode = AutovalidateMode.always;
                     setState(() {});
