@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:notsapp/views/widgets/custom_search_icon.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title, required this.icon});
+  const CustomAppBar({super.key, required this.title, required this.icon, required this.onPressed});
 
   final String title;
   final IconData icon;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class CustomAppBar extends StatelessWidget {
           style:
               Theme.of(context).textTheme.headlineSmall!.copyWith(fontSize: 28),
         ),
-         CustomSearchIcon(
+        CustomIcon(
+          onPressed: onPressed,
           icon: icon,
-          
         )
       ],
     );
